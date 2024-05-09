@@ -1,0 +1,16 @@
+{
+  "name": "basic info site with nodejs",
+  "version": "1.0.0",
+  "description": "first ",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "dev-jo",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
