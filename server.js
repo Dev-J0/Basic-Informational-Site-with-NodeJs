@@ -17,26 +17,24 @@ const server = http.createServer((async(req, res) => {
 
    try {
     //check if GET request 
-    if(req.method === 'GET') {
+    if (req.method === 'GET') {
         let filePath;
-        if(req.url === '/') {
-            filePath = path.join(__dirname, 'public', 'index.html')
-           } else if (req.url === '/about') {
-            filePath = path.join(__dirname, 'public', 'about.html')
-
-           } else if (req.url === '/contact') {
-            filePath = path.join(__dirname, 'public', 'contact.html')
-          
+        if (req.url === '/') {
+            filePath = path.join(__dirname, 'public', 'index.html');
+        } else if (req.url === '/about') {
+            filePath = path.join(__dirname, 'public', 'about.html');
+        } else if (req.url === '/contact') {
+            filePath = path.join(__dirname, 'public', 'contact.html');
         } else {
-            throw new Error ('not found')
-           }
-        
-           const data = await fs.readFile(filePath);
-           res.setHeader('Content-Type', 'text/html');
-           res.write(data);
-           res.end();
+            filePath = path.join(__dirname, 'public', '404.html');
+        }
+
+        const data = await fs.readFile(filePath);
+        res.setHeader('Content-Type', 'text/html');
+        res.write(data);
+        res.end();
     } else {
-        throw new Error('Method not allowed')
+        throw new Error('Method not allowed');
     }
 } catch (error) {
     res.writeHead(500, {'Content-Type' : 'text/plain' })
